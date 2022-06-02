@@ -50,7 +50,7 @@ class Task
         return $this;
     }
 
-    public function isCompleted(): ?bool
+    public function getCompleted(): ?bool
     {
         return $this->completed;
     }
