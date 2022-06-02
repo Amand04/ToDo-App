@@ -5,22 +5,21 @@
 {% for list in lists %}
   <div class="card m-2" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title" style="color: {{ list.color }}">{{ list.name }}</h5>
-   
-  {% for task in list.tasks %}
-    <p class="card-text">
-    <input type="checkbox" {{task.completed ? "checked" : ""}} onchange="window.location.href='/update-task-status/{{task.id}}'">{{task.title}}
-      <a href="/update-task/{{task.id }}" class="btn btn-warning">abc</a>
-      <a href="/delete-task/{{ task.id }}" class="btn btn-danger">-</a>
-    </p>
-  {% endfor %}
-    <center>
-      <a href="/create-task/{{ list.id }}" class="btn btn-success">+</a>
-    </center>
-      <a href="/update-list/{{ list.id }}" class="btn btn-warning">Modifier</a>
-      <a href="/delete-list/{{ list.id }}" class="btn btn-danger">Supprimer</a>
+      {% for task in list.tasks %}
+                            <p class="card-text">
+                                <input type="checkbox" {{ task.completed ? "checked" : "" }} onchange="window.location.href='/update-task-status/{{ task.id }}'">
+                                {{ task.title }}
+                                <a href="/update-task/{{ task.id }}" class="text-warning"><i class="fas fa-edit"></i></a>
+                                <a href="/delete-task/{{ task.id }}" class="text-danger"><i class="fas fa-trash"></i></a>
+                            </p>
+                        {% endfor %}
+                    <center>
+                        <a href="/create-task/{{ list.id }}" class="btn btn-success"><i class="fas fa-plus"></i></a>
+                    </center>
+                    <a href="/update-list/{{ list.id }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                    <a href="/delete-list/{{ list.id }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-  </div>
-{% endfor %}
-  </div>
 {% endblock %}
